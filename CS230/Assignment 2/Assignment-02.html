@@ -1,0 +1,75 @@
+<!-- Chrome Version 98.0.4758.102 (Official Build) (64-bit)
+Windows 10
+Author : Alex Majka 20429324
+Written up on the most recent version of Brackets.
+
+the animations work individually if you refresh the page, would be nice if we had more of a base to work on it had a bit more of an informative lecture for this animation stuff. I literally spent more time trying to find information on how to do this animation stuff than doing it, there's no information out anywhere and not much we can work on from the lectures. Anything I could find was stuff relating to animation within the svg class and how to animate using .js libraries.
+-->
+
+
+<html>
+    <link rel="stylesheet" href="Assignment-02.css">
+    <script src="Assignment-02.js"defer></script>
+    <center><h1>Ghost SVG Assignment 2</h1></center>
+<body>
+    <!--Control box with some editted elements from John Keating's code week-->
+    <div class = "container">
+    <div class="row">
+        <div class="myControlsBox column left">
+        <center>Control Box</center>
+            <div style="margin: 0 auto; width: 480px;">
+                <table class="controls">
+                    <button class="button butBlue" onclick="ani();">Animate</button>
+                    <button class="button butBlue" onclick="showsource();">Svg/Source</button>
+                    <form method="get" action="/ghost.svg">
+                    <button class="button butBlue" type="submit">Download!</button>
+                    </form>
+                </table>
+            </div>
+            <br /><br /><br /><br /><br /><br /><br />
+            <div style="margin: 0 auto; width: 480px;">
+                <table class="animations">
+                    <button class="button butBlue" onclick="rgbEyes();" >RGB Eyes</button>
+                    <button class="button butBlue" onclick="thickEyebrows();">Thick Eyebrows</button>
+                    <button class="button butBlue" onclick="hoverGhost();">Ghost hover</button>
+                    <button class="button butBlue" onclick="peekGhost();">Peeking Ghost</button>
+                    <button class="button butBlue" onclick="longerEyes();" >Longer Eyes</button>
+                    <button class="button butBlue" onclick="widerEyes();" >Wider Eyes</button>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!--the class for the svg element from John Keating's code week default ghost-->
+    <div class="mySVGBox column">
+        <center>SVG zone</center>
+            <svg id="mySVGExternal" width="400" height="480" viewBox="0 0 100 120">
+	 	     <rect id="background"  width="100" height="120" style="fill:black; stroke-width:1; stroke:black"/>
+            <g id="ghost" transform="rotate(0),	translate(0,0),	scale (1.0)">
+	 	 	 	 <path id="body" d="M 10 120 A 2.0 5.8, 0 0 1, 90 120" style="stroke:white; strokewidth:0.5; fill:white"/>
+                    <g id="eyes" transform="rotate(0,50,40), translate(0,0)">
+                    <g id="eye-l" transform="rotate(0,50,40), translate(0,0)">
+	 	             <ellipse id="eye-l-ball" cx="45" cy="40" rx="4" ry="6" style="stroke:black; fill:black;"/>
+				        <rect transform="rotate(16,46,35) "x="40" y="33" width="11"	height="6" fill="white"	visibility="hidden"	/>
+				        <circle	id="eye-l-pupil" cx="45" cy="44" r="0.5" style="stroke:white; fill:white"/>
+				        <g id="eye-l-brow">
+	 	 	 	         <path d="M 41 32 Q 45 27 49 32" stroke="black" stroke-width="0.5" fill="transparent"/>
+	 	 	 	         <path d="M 41 32 Q	45 26 49 32" stroke="black" stroke-width="0.5" fill="transparent"/>
+				        </g>
+                    </g>
+				    <g id="eye-r" transform="rotate(0,50,40), translate(0,0)">
+	 	 	 	     <ellipse id="eye-r-ball" cx="55" cy="40" rx="4" ry="6"	 style="stroke:black; fill:black"/>
+	 	 	 	     <rect transform="rotate(-16,56,35)" x="49" y="32" width="11" height="6" fill="white" visibility="hidden"/>
+				    <circle	id="eye-r-pupil" cx="55" cy="44" r="0.5" style="stroke:white; fill:white"/>
+                    </g>
+				    <g id="eye-l-brow">
+	 	 	 	     <path d="M 51 32 Q 55 27 59 32" stroke="black" stroke-width="0.5" fill="transparent"/>
+	 	 	 	     <path d="M 51 32 Q 55 26 59 32" stroke="black" stroke-width="0.5" fill="transparent"/>
+				    </g>
+                    </g>
+            </g>
+            </svg>
+    </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+Windows 10
+Chrome Version 99.0.4844.74 (Official Build) (64-bit)
+Author : Alex Majka 20429324
+Written up on the most recent version of Brackets.
+tested using nodejs
+
+Some of this code is based on John Keating's index.html
+
+
+*The delete, update and Add don't work for some reason, I was not able to track down what was the problem. 
+
+*Having else if instead of if on the UPDATE method returned errors for some reason in the js currentMethod=== etc. It also made it impossible to use the get function. 
+-->
+    
+<head>
+    <title>USERS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Use Bootstrap for the form styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Use W3.CSS for the Modal -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Extra Styles for the Bootstrap Forms */
+        h1 {
+            font: 30px Verdana;
+            text-align: center;
+        }
+        h2 {
+            font: 20px Verdana;
+            text-align: center;
+        }
+        legend {
+            padding: 10px;
+            font: 30px Verdana
+        }
+    </style>
+    
+    <!--
+    Bootstrap Styled Form
+    Generated using the Bootsnipp Form Builder and Generator for Bootstrap
+    https://bootsnipp.com/forms
+    
+
+    FRONT END FOR THE SOLUTION
+    -->
+    <body>
+    <div>
+        <h1>USERS Database for Assignment 4</h1>
+        <form class="form-horizontal">
+        <fieldset>
+        
+        <!-- Front end to add-->    
+        <!-- Form Name -->
+        <form id="addUserForm" class="form-horizontal">
+        <legend>USERS Database form</legend>
+        
+        <!-- Button Drop Down -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="title">Title</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <input id="title" name="Title" class="form-control" placeholder="Title" type="text">
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                  Select Title
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu pull-right">
+                  <li><a href="#">Mx</a></li>
+                  <li><a href="#">Ms</a></li>
+                  <li><a href="#">Mr</a></li>
+                  <li><a href="#">Mrs</a></li>
+                  <li><a href="#">Miss</a></li>
+                  <li><a href="#">Dr</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="firstName">First Name(s)*</label>  
+          <div class="col-md-4">
+          <input id="firstName" name="FirstName" type="text" placeholder="Enter Name" class="form-control input-md">
+
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="surname">Surname*</label>  
+          <div class="col-md-4">
+          <input id="surname" name="surname" type="text" placeholder="Enter Surname" class="form-control input-md">
+
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="mobile">Mobile Nr.*</label>  
+          <div class="col-md-4">
+          <input id="mobile" name="mobile" type="text" placeholder="Enter Mobile" class="form-control input-md">
+
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="email">Email Address*</label>  
+          <div class="col-md-4">
+          <input id="email" name="email" type="text" placeholder="Enter Email" class="form-control input-md">
+
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="add1">Address Line 1*</label>  
+          <div class="col-md-4">
+          <input id="address1" name="add1" type="text" placeholder="Enter Address" class="form-control input-md">
+
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="add2">Address Line 2</label>  
+          <div class="col-md-4">
+          <input id="address2" name="add2" type="text" placeholder="Enter Address" class="form-control input-md">
+
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="town">Town*</label>  
+          <div class="col-md-4">
+          <input id="town" name="town" type="text" placeholder="Enter Town" class="form-control input-md">
+
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="countyCity">County/City*</label>  
+          <div class="col-md-4">
+          <input id="countyCity" name="countyCity" type="text" placeholder="Enter County/City" class="form-control input-md">
+
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="eircode">Eircode</label>  
+          <div class="col-md-4">
+          <input id="eircode" name="eircode" type="text" placeholder="Enter Eircode" class="form-control input-md">
+          <span class="help-block">All fields with * are mandatory to be filled out</span>  
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="submit"></label>
+                <div class="col-md-4">
+                    <input type="submit" value="Send User Data" class="btn btn-primary">
+            </div>
+        </div>
+        </form>
+        
+        <!-- Front end to Delete-->   
+        <div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <form id="deleteuserform" class="form-horizontal">
+                    <fieldset>
+                        <!-- Form Name -->
+                        <legend>Delete User from Database</legend>
+                        
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="deleteuser">Delete user by First Name</label>  
+                          <div class="col-md-4">
+                          <input id="deleteuser" name="deleteuser" type="text" placeholder="Enter First Name" class="form-control input-md">
+
+                          </div>
+                        </div>
+                        
+                        <!-- Submit -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="submit"></label>
+                            <div class="col-md-4">
+                                <input type="submit" value="Delete User Data" class="btn btn-primary">
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        </div>
+            
+        <!-- Front end to update-->    
+        <div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <form id="updateuserform" class="form-horizontal">
+                    <fieldset>
+                        <!-- Form Name -->
+                        <legend>Update User Phone nr.</legend>
+                        
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="updateuser">Update user with name</label>  
+                          <div class="col-md-4">
+                          <input id="updateuser" name="updateuser" type="text" placeholder="Enter First Name of the user you wish to update" class="form-control input-md">
+
+                          </div>
+                        </div>
+                        
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="updatedphone">New phone nr.</label>  
+                          <div class="col-md-4">
+                          <input id="updatedphone" name="updatedphone" type="text" placeholder="Enter the Phone Number" class="form-control input-md">
+
+                          </div>
+                        </div>
+                        
+                        <!-- Submit -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="submit"></label>
+                            <div class="col-md-4">
+                                <input type="submit" value="Update User Data" class="btn btn-primary">
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        </div>
+            
+            
+        <div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <form id="getUserDatabaseForm" class="form-horizontal">
+                    <fieldset>
+                        <!-- Form Name -->
+                        <legend>Show User Database</legend>
+
+                        <!-- Textarea -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="showUserDatabase">User Database</label>
+                            <div class="col-md-4">
+                                <textarea class="form-control" id="showUserDatabase"
+                                    name="showUserDatabase">Retrieved Database displayed here!</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="submit"></label>
+                            <div class="col-md-4">
+                                <input type="submit" value="Get User Database" class="btn btn-primary">
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        </div>
+            
+            
+        </fieldset>
+        </form>
+    </div>
+        <!-- 
+        Modal Popup used to confirm User Data was sent and added to Database 
+        W3.CSS Styled Form generated using W3.CSS modal demos
+        https://www.w3schools.com/w3css/w3css_modal.asp
+    -->
+    <div id="modalUserAdded" class="w3-modal w3-animate-opacity">
+        <div class="w3-modal-content w3-card-4">
+            <header class="w3-container w3-blue-grey">
+                <span onclick="document.getElementById('modalUserAdded').style.display='none'"
+                    class="w3-button w3-large w3-display-topright">&times;</span>
+                <h2>User Added to Database!</h2>
+            </header>
+            <div class="w3-container">
+                <p></p>
+                <p id="modalUserAddedMessage">Message Text</p>
+            </div>
+            <footer class="w3-container w3-blue-grey">
+                <p></p>
+            </footer>
+        </div>
+    </div>
+        <script>
+        $(document).ready(function () {
+
+            // handle "Add User to Database" submit button click
+            $('#addUserForm').submit(function (e) {
+                var user = {
+                    
+                    title: $('input[name=title]').val(),
+                    firstname: $('input[name=firstname]').val(),
+                    surname: $('input[name=surname]').val(),
+                    email: $('input[name=email]').val(),
+                    mobile: $('input[name=mobile]').val(),
+                    add1: $('input[name=add1]').val(),
+                    add2: $('input[name=add2]').val(),
+                    town: $('input[name=town]').val(),
+                    countyCity: $('input[name=countyCity]').val(),
+                    eircode: $('input[name=eircode]').val(),
+                };
+                $.ajax({
+                    type: 'POST',
+                    crossDomain: true,
+                    url: 'http://localhost:8000/api/user',
+                    data: user
+                })
+                    .done(function (data) {
+                        // reset the form for next time!
+                        $('input[name=firstname]').val('');
+                        $('input[name=surname]').val('');
+                        $('input[name=email]').val('');
+                        $('input[name=mobile]').val('');
+                        $('input[name=add1]').val('');
+                        $('input[name=add2]').val('');
+                        $('input[name=town]').val('');
+                        $('input[name=countyCity]').val('');
+                        $('input[name=eircode]').val('');
+                        // show confirmation message from API
+                        showUserModal(data);
+                    });
+                e.preventDefault(); // when method is called, the default action of the event will not be triggered.
+                                    // meand that clicked submit button will not take the browser to a new URL.
+            });
+            
+            //handle delete user from database submit button click
+            $('#deleteuserform').submit(function (e) {
+                var user = {
+                    deleteuser: $('input[name=deleteuser]').val(),
+                };
+                $.ajax({
+                    type: 'DELETE',
+                    crossDomain: true,
+                    url: 'http://localhost:8000/api/user',
+                    data: user
+                })
+                    .done(function (data) {
+                        // reset the form for next time!
+                        $('input[name=deleteuser]').val('');
+                        // show confirmation message from API
+                        showUserModal(data);
+                    });
+                e.preventDefault(); // when method is called, the default action of the event will not be triggered.
+                                    // meand that clicked submit button will not take the browser to a new URL.
+            });
+            
+            //handle update user form 
+            $('#updateuserform').submit(function (e) {
+                var user = {
+                    updateuser: $('input[name=updateuser]').val(),
+                    updateuser: $('input[name=updatedphone]').val(),
+                };
+                $.ajax({
+                    type: 'UPDATE',
+                    crossDomain: true,
+                    url: 'http://localhost:8000/api/user',
+                    data: user
+                })
+                    .done(function (data) {
+                        // reset the form for next time!
+                        $('input[name=updateuser]').val('');
+                        $('input[name=updatedphone]').val('');
+                        // show confirmation message from API
+                        showUserModal(data);
+                    });
+                e.preventDefault(); // when method is called, the default action of the event will not be triggered.
+                                    // meand that clicked submit button will not take the browser to a new URL.
+            });
+
+
+            // handle "Get User Database" submit button click
+            $('#getUserDatabaseForm').submit(function (e) {
+                $.ajax({
+                    type: 'GET',
+                    crossDomain: true,
+                    url: 'http://localhost:8000/api/user'
+                })
+                    .done(function (data) {
+                        // display the database in the textarea and trigger an input change event
+                        $('#showUserDatabase').val(JSON.stringify(data, null, 2)).trigger('input');
+                    });
+                e.preventDefault(); // when method is called, the default action of the event will not be triggered.
+                                    // meand that clicked submit button will not take the browser to a new URL.
+            });
+
+            // some fun jQuery here that is not necessary for operation
+            // this sets an event handler to resize the textarea after 
+            // a change event is triggered the call is triggered earlier
+            // after the content received from the API is written to the
+            // textarea it resizes to the size of the contained text
+            // just a vanity addition really!
+            $("#showUserDatabase").on("input", function () {
+                this.style.height = (this.scrollHeight) + "px;overflow-y:hidden;";
+                this.style.height = "auto";
+                this.style.height = (this.scrollHeight) + "px";
+            });
+
+        });
+
+        // Show the "User Added" Modal - this is a basic demo - change it!
+        function showUserModal(data) {
+            document.getElementById('modalUserAddedMessage').innerHTML = data;
+            document.getElementById('modalUserAdded').style.display = 'block';
+        }
+            
+    </script>
+        
+
+    </body>
+</head>
+
+</html>

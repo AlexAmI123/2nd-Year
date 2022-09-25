@@ -1,0 +1,65 @@
+/* editted code from John keating's code week along with some additions of my own for centering etc*/
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+} 
+.mySVGBox {
+    height: 490px;
+    width: 420px;
+    border: 1px solid black;
+    margin: auto;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.myControlsBox {
+    height: 490px;
+    width: 420px;
+    border: 1px solid black;
+    margin: auto;
+    margin-top: 10px;
+    padding: 10px;
+}
+.column {
+            float: left;
+            margin: 5px;
+        }
+
+        .left,
+        .right,
+        .middle {
+            width: 440px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+svg,
+object {
+    border: 1px solid grey;
+    display: block;
+    margin: auto;
+}
+.button {
+    border: none;
+    color: white;
+    padding: 13px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.butBlue {
+    background-color: #008CBA;
+}

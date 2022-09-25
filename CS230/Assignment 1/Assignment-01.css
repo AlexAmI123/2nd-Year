@@ -1,0 +1,110 @@
+body {
+	background-color: white;
+    font: 14px/24px Arial, sans-serif;
+}
+.shape {
+	margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+.one {
+	width: 0;
+	height: 0;
+	border-left: 80px solid transparent;
+	border-right: 80px solid transparent;
+	border-bottom: 100px solid red;
+}
+.one:hover {
+	border-bottom: 100px solid red;			
+}
+.two {
+	border-bottom: 100px solid orange;
+	border-left: 80px solid transparent;
+	border-right: 80px solid transparent;
+	height: 20;
+	width: 180px;
+}
+.two:hover {
+	border-bottom: 100px solid orange;			
+}
+.three {
+	border-bottom: 100px solid yellow;
+	border-left: 80px solid transparent;
+	border-right: 80px solid transparent;
+	height: 20;
+	width: 370px;
+}
+.three:hover {
+	border-bottom: 100px solid yellow;			
+}
+.four {
+    border-bottom: 100px solid #00BFFF;
+	border-left: 80px solid transparent;
+	border-right: 80px solid transparent;
+	height: 0;
+	width: 530px;
+}
+.four:hover {
+	border-bottom: 100px solid #00BFFF;
+}
+.five {
+    border-bottom: 100px solid saddlebrown;
+	border-left: 80px solid transparent;
+	border-right: 80px solid transparent;
+	height: 0;
+	width: 690px;
+}
+.five:hover {
+	border-bottom: 100px solid saddlebrown;
+}
+.six {
+    border-bottom: 100px solid limegreen;
+	border-left: 80px solid transparent;
+	border-right: 80px solid transparent;
+	height: 0;
+	width: 850px;
+}
+.six:hover {
+	border-bottom: 100px solid limegreen;
+}
+.inner {
+    align-self: center;
+    padding: 2rem;
+}
+.numberCircle {
+    display: flex;
+    border-radius: 50%;
+    border: 2px solid grey;
+    font-size: 25px;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    margin-top:100px;
+}
+.numberCircle:before,
+    .numberCircle:after {
+    content: '\200B';
+    display: inline-block;
+    line-height: 0px;
+    padding-top: 50%;
+    padding-bottom: 50%;
+}
+
+.numberCircle:before {
+    padding-left: 0.35em;
+}
+.numberCircle:after {
+    padding-right: 0.35em;
+}
+.numberCircle:hover {
+    background-color: yellow;
+}
+.tabular {
+    font-family: monospace;
+}
+ input[type="date"]
+{
+    font-size: 25px;
+}
