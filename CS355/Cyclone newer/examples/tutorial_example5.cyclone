@@ -1,0 +1,52 @@
+/**
+ * Demo: Cyclone suppose to report no path found
+ * Written by: Hao Wu
+ * Created:  15:06,01-Dec-2021.
+ */
+
+graph False{
+
+    abstract start node S0 {}
+    abstract node S1 {}
+    abstract node S2 {}
+    abstract node S3 {}
+    abstract node S4 {}
+
+    edge t1 {S0->S1}
+    edge t2 {S0->S2}
+    edge t3 {S0->S3}
+    edge t4 {S0->S4}
+
+    edge t5 {S1->S0}
+    edge t6 {S1->S2}
+    edge t7 {S1->S3}
+    edge t8 {S1->S4}
+
+    edge t9 {S2->S0}
+    edge t10 {S2->S1}
+    edge t11 {S2->S3}
+    edge t12 {S2->S4}
+
+    edge t13 {S3->S0}
+    edge t14 {S3->S1}
+    edge t15 {S3->S2}
+    edge t16 {S3->S4}
+
+    edge t17 {S4->S0}
+    edge t18 {S4->S1}
+    edge t19 {S4->S2}
+    edge t20 {S4->S3}
+
+    goal{
+        /**
+         * false is used in path condition. 
+         * expected outcome: no path returned from Cyclone.
+         */
+        let cond1=true;
+        cond1=false;
+        let cond2=true;
+
+        check for 10 condition (cond1 && cond2) reach (S0)
+    }
+
+}

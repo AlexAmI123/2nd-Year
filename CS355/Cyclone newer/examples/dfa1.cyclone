@@ -1,0 +1,21 @@
+machine DFA1{
+
+    /* the set of nodes */
+    abstract start node q1{}
+    abstract final node q2{}
+    abstract node q3{}
+    
+    
+    /* the set of edges */
+    transition t1 {q1->q1 on "0"}
+    transition t2 {q1->q2 on "1"}
+    transition t3 {q2->q2 on "1"}
+    transition t4 {q2->q3 on "0"}
+    transition t5 {q3->q2 on "1"}
+    transition t6 {q3->q3 on "0"}
+
+    goal{
+        enumerate for 5
+    }
+
+}

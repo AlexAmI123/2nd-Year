@@ -1,0 +1,34 @@
+ machine dfa3{
+    abstract start state S{}
+    abstract state q1{}
+    abstract state q2{}
+    abstract state q3{}
+    abstract state q4{}
+    abstract state q5{}
+    abstract state q6{}
+    abstract state q7{}
+    abstract state q8{}
+    abstract final state q9{}
+
+    transition t1 {S->q1 on "a"}
+    transition t2 {S->q1 on "b"}
+    transition t3 {q1->q2 on "a"}
+    transition t4 {q1->q2 on "b"}
+    transition t5 {q2->q3 on "a"}
+    transition t6 {q2->q3 on "b"}
+    transition t7 {q3->q4 on "a"}
+    transition t8 {q3->q7 on "b"}
+    transition t9 {q4->q5 on "b"}
+    transition t10 {q4->q8 on "a"}    
+    transition t11 {q5->q6 on "b"}
+    transition t12 {q5->q9 on "a"}
+    transition t13 {q7->q8 on "a"}
+    transition t14 {q7->q8 on "b"}
+    transition t15 {q8->q9 on "a"}
+    transition t16 {q8->q9 on "b"}
+
+    goal{
+        enumerate for 6
+    }
+
+ }

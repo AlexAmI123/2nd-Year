@@ -1,0 +1,96 @@
+/*
+ * Tutorial Example: Finding a route for an agent
+ * Written by: Hao Wu
+ *
+ * Created: 16:22,17th-November-2021.
+ */
+graph PlanningExample{
+
+    abstract start node S0{}
+    abstract node S1{}  
+    abstract node S2{}
+    abstract node S3{}
+    abstract node S4{}
+    abstract node S5{}
+    abstract node S6{}
+    abstract node S7{} //wall
+    abstract node S8{} 
+    abstract node S9{}
+    abstract node S10{}
+    abstract node S11{} //wall
+    abstract node S12{} //wall
+    abstract node S13{} //package
+    abstract node S14{}
+    abstract node S15{}
+    abstract node S16{}
+    abstract node S17{}
+    abstract node S18{} //wall
+    abstract node S19{}
+    abstract node S20{}
+    abstract node S21{}
+    abstract node S22{}
+    abstract node S23{} //wall
+    abstract node S24{} //house
+
+    edge t1 { S0 -> S1 }
+    edge t2 { S0 -> S5 }
+    edge t3 { S1 -> S2 }
+    edge t4 { S1 -> S6 }
+    edge t5 { S2 -> S3 }
+    edge t6 { S2 -> S7 }
+    edge t7 { S3 -> S4 }
+    edge t8 { S3 -> S8 }
+    edge t9 { S4 -> S9 }
+
+    edge t10 { S5 -> S6 }
+    edge t11 { S5 -> S10 }
+    edge t12 { S6 -> S7 }
+    edge t13 { S6 -> S11 }
+    edge t14 { S7 -> S8 }
+    edge t15 { S7 -> S12 }
+    edge t16 { S8 -> S9 }
+    edge t17 { S8 -> S13 }
+    edge t18 { S9 -> S14 }
+
+    edge t19 { S10 -> S11 }
+    edge t20 { S10 -> S15 }
+    edge t21 { S11 -> S12 }
+    edge t22 { S11 -> S16 }
+    edge t23 { S12 -> S13 }
+    edge t24 { S12 -> S17 }
+    edge t25 { S13 -> S14 }
+    edge t26 { S13 -> S18 }
+    edge t27 { S14 -> S19 }
+
+    edge t28 { S15 -> S16 }
+    edge t29 { S15 -> S20 }
+    edge t30 { S16 -> S17 }
+    edge t31 { S16 -> S21 }
+    edge t32 { S17 -> S18 }
+    edge t33 { S17 -> S22 }
+    edge t34 { S18 -> S19 }
+    edge t35 { S18 -> S23 }
+    edge t36 { S19 -> S24 }
+
+    edge t37 { S20 -> S21 }
+    edge t38 { S21 -> S22 }
+    edge t39 { S22 -> S23 }
+    edge t40 { S23 -> S24 }
+    
+
+    goal{
+        /*
+         * Find a path for an agent to move from S0 to S24.
+         * Condition: An agent cannot travel through walls, so we need to exclude those nodes are marked as walls.
+         */
+        check for 8 condition ( 
+                (!S7 && !S11 && !S12),  
+                (!S18 && !S23),
+                (_->S13->_)
+                )
+        reach (S24)
+    }
+
+
+
+}

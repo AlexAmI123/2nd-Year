@@ -1,0 +1,72 @@
+graph fuel{
+    /* the set of nodes */
+    abstract start node s{}
+    abstract node a{}
+    abstract node b{}
+    abstract node c{}
+    abstract node d{}
+    abstract node e{}
+    abstract node f{}
+    abstract node g{}
+    
+    /* the set of edges */
+    edge {s -> +}
+    
+    edge t1 { a -> g}
+    edge t2 { a -> d}
+    edge t3 { a -> b}
+    
+    edge t4 { b -> d}
+    edge t5 { b -> c}
+    
+    edge t6 { c -> d}
+    edge t7 { c -> b}
+    edge t8 { c -> a}
+    
+    edge t9 { d -> e}
+    edge t10 { d -> c}
+    
+    edge t11 { e -> f}
+    edge t12 { e -> b}
+    
+    edge t13 { f -> b}
+    edge t14 { f -> c}
+    edge t15 { f -> g}
+    
+    edge t16 { g -> d}
+    edge t17 { g -> b}
+
+    goal{
+        /* find hamiltonian path with such conditions */
+        enumerate for 8 condition(
+                (((s->a->_->_->_->_->_->_->a)&&(a^{2} && b^{1} && 
+                c^{1} && d^{1} && 
+                e^{1} && f^{1} && 
+                g^{1} && s^{1}))
+                ||((s->b->_->_->_->_->_->_->b)&&(a^{1} && b^{2} && 
+                c^{1} && d^{1} && 
+                e^{1} && f^{1} && 
+                g^{1} && s^{1}))
+                ||((s->c->_->_->_->_->_->_->c)&&(a^{1} && b^{1} && 
+                c^{2} && d^{1} && 
+                e^{1} && f^{1} && 
+                g^{1} && s^{1}))
+                ||((s->d->_->_->_->_->_->_->d)&&(a^{1} && b^{1} && 
+                c^{1} && d^{2} && 
+                e^{1} && f^{1} && 
+                g^{1} && s^{1}))
+                ||((s->e->_->_->_->_->_->_->e)&&(a^{1} && b^{1} && 
+                c^{1} && d^{1} && 
+                e^{2} && f^{1} && 
+                g^{1} && s^{1}))
+                ||((s->f->_->_->_->_->_->_->f)&&(a^{1} && b^{1} && 
+                c^{1} && d^{1} && 
+                e^{1} && f^{2} && 
+                g^{1} && s^{1}))
+                ||((s->g->_->_->_->_->_->_->g)&&(a^{1} && b^{1} && 
+                c^{1} && d^{1} && 
+                e^{1} && f^{1} && 
+                g^{2} && s^{1})))) 
+        reach (a,b,c,d,e,f,g) //must reach any one of the nodes (excluding starting point).
+    }
+ }

@@ -1,0 +1,37 @@
+graph deicer{
+    /* the set of nodes */
+    abstract node a{}
+    abstract node b{}
+    abstract node c{}
+    abstract start node d{}
+    abstract node e{}
+    abstract node f{}
+    
+    /* the set of edges */
+    edge t1 { d -> b}
+    edge t2 { b -> e}
+    edge t3 { c -> d}
+    edge t4 { c -> b}
+    edge t5 { d -> f}
+    edge t6 { f -> a}
+    edge t7 { b -> a}
+    edge t8 { e -> c}
+    edge t9 { a -> c}
+
+    goal{
+        /* 
+         * Find a Hamilton path from node S0
+         * Condition: cover all nodes and each node can only appear exactly once.
+         * 
+         * N^{i..j}: specify a node N that appears between the number of i (inclusive) and j (inclusive) times. 
+         * 
+         */
+        check for 9 via (
+                (d -> b)^{1} && (b -> e)^{1} && 
+                (c -> d)^{1} && (c -> b)^{1} && 
+                (d -> f)^{1} && (f -> a)^{1} && 
+                (b -> a)^{1} && (e -> c)^{1} &&
+                (a -> c)^{1}) 
+        reach (a,b,c,d,e,f) //must reach any one of the nodes (excluding starting point).
+    }
+ }

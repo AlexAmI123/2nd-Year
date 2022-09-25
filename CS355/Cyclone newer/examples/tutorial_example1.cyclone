@@ -1,0 +1,31 @@
+ /* Tutorial Example 1:
+  * 
+  * Written by: Hao Wu
+  * Created: 23:48,10th-November-2021.
+  */
+
+graph TutorialExample1{
+
+    /* the set of nodes */
+    abstract start node S1{}
+    abstract node S2{}
+    
+    
+    /* the set of edges */
+    edge t1 { S1 -> S1 }
+    edge t2 { S1 -> S2 }
+    edge t3 { S2 -> S1 }
+    edge t4 { S2 -> S2 }
+    
+    goal{
+
+        /*
+         * Find a path (starts from node S1) that 
+         *  has a length of 5, 
+         *  must not include self-loops,
+         *  and eventually reach S2.
+         */
+        check for 5 condition (!(S1->S1) && !(S2->S2)) reach (S2)
+    }
+
+}

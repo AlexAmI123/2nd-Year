@@ -1,0 +1,53 @@
+/**
+ * Tutorial Example: Finding Hamiltonian path
+ *
+ * Written by: Hao Wu
+ * Created:  20:05,13th-November-2021.
+*  Modified: 21:50,29th-November-2021.
+ */
+
+ graph HamiltonianPathExample{
+
+    /* the set of nodes */
+    abstract start node S0{}
+    abstract node S1{}
+    abstract node S2{}
+    abstract node S3{}
+    abstract node S4{}
+    abstract node S5{}
+    abstract node S6{}
+    
+    /* the set of edges */
+    edge t1 { S0 -> S1 }
+    edge t2 { S0 -> S3 }
+    edge t3 { S0 -> S6 }
+    edge t4 { S1 -> S2 }
+    edge t5 { S1 -> S3 }
+    edge t6 { S2 -> S3 }
+    edge t7 { S2 -> S1 }
+    edge t8 { S3 -> S2 }
+    edge t9 { S3 -> S4 }
+    edge t10 { S4 -> S5 }
+    edge t11 { S4 -> S1 }
+    edge t12 { S5 -> S1 }
+    edge t13 { S5 -> S2 }
+    edge t14 { S5 -> S6 }
+    edge t15 { S6 -> S1 }
+    edge t16 { S6 -> S3 }
+
+    goal{
+        /* 
+         * Find a Hamilton path from node S0
+         * Condition: cover all nodes and each node can only appear exactly once.
+         * 
+         * N^{i..j}: specify a node N that appears between the number of i (inclusive) and j (inclusive) times. 
+         * 
+         */
+        check for 6 via (
+                S0^{1} && S1^{1} && 
+                S2^{1} && S3^{1} && 
+                S4^{1} && S5^{1} && 
+                S6^{1} ) 
+        reach (S0,S1,S2,S3,S4,S5,S6) //must reach any one of the nodes (excluding starting point).
+    }
+ }

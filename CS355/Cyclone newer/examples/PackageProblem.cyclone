@@ -1,0 +1,50 @@
+graph problem{
+    /* the set of states */
+    abstract state t0{} 
+    abstract start state t1{}
+    abstract state t2{} 
+    abstract state t3{} 
+    abstract state t4{} 
+    abstract state t5{} 
+    abstract state t6{}
+    
+    /* the set of transitions */
+    transition a {t1->t0}
+    transition a1 {t1->t4}
+    transition a2 {t1->t5}
+    transition a3 {t1->t6}
+    
+    transition a4 {t0->t2}
+    transition a5 {t0->t4}
+    transition a6 {t0->t5}
+    transition a7 {t0->t6}
+    
+    transition a8 {t2->t0}
+    transition a9 {t2->t4}
+    transition a10 {t2->t6}
+    
+    transition a11 {t3->t0}
+    transition a12 {t3->t2}
+    transition a13 {t3->t5}
+    transition a14 {t3->t6}
+    
+    transition a15 {t4->t3}
+    
+    transition a16 {t5->t0}
+    transition a17 {t5->t2}
+    transition a18 {t5->t4}
+    
+    transition a19 {t6->t0}
+    transition a20 {t6->t2}
+    transition a21 {t6->t4}
+    transition a22 {t6->t5}
+    transition a23 {t6->t0}
+    transition a24 {t6->t0}
+    
+    /* find hamiltonian path with such conditions */
+    goal{
+    enumerate for 6 condition(
+        (t1^{1} && t0^{1} && t0^{1} && t2^{1} && t3^{1} && t4^{1} && t5^{1} && t6^{1}) && ((t5->t2)||(t5->_->t2)||(t5->_->_->t2)||(t5->_->_->_->t2)||(t5->_->_->_->_->t2)) && (t4->t3))
+        reach(t0,t1,t2,t3,t4,t5,t6)
+    }
+}
